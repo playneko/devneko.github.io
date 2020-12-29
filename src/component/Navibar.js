@@ -6,16 +6,16 @@ import ListItemText from '@material-ui/core/ListItemText';
 
 export default function Navibar() {
   let [naviData, naviDataSet] = useState([
-    {categori: 'Home', path: '/', component: ''},
-    {categori: 'Rasberry Pi', path: '/rasberry-pi', component: 'RasberryPi'},
-    {categori: 'Python', path: '/python', component: 'RasberryPi'},
-    {categori: 'PHP', path: '/php', component: 'RasberryPi'},
-    {categori: 'Java', path: '/java', component: 'RasberryPi'},
-    {categori: 'Linux', path: '/linux', component: 'RasberryPi'},
-    {categori: 'JavaScript', path: '/java-script', component: 'RasberryPi'},
-    {categori: '아키바 정보', path: '/akihabara', component: 'RasberryPi'},
-    {categori: 'micro:bit', path: '/micro-bit', component: 'RasberryPi'},
-    {categori: '챗봇(ChatBot)', path: '/chat-bot', component: 'RasberryPi'}
+    {categori: 'Home', path: '/'},
+    {categori: 'Rasberry Pi', path: '/rasberry-pi'},
+    {categori: 'Python', path: '/python'},
+    {categori: 'PHP', path: '/php'},
+    {categori: 'Java', path: '/java'},
+    {categori: 'Linux', path: '/linux'},
+    {categori: 'JavaScript', path: '/java-script'},
+    {categori: '아키바 정보', path: '/akihabara'},
+    {categori: 'micro:bit', path: '/micro-bit'},
+    {categori: '챗봇(ChatBot)', path: '/chat-bot'}
   ]);
 
   return (

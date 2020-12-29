@@ -1,9 +1,9 @@
 import React from 'react';
 
-export default function RasberryPi() {
+export default function JavaScript() {
     return (
         <>
-        Rasberry Pi
+        JavaScript
         </>
     );
 }

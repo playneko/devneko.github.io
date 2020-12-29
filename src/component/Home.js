@@ -4,13 +4,15 @@ import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
-import CardActions from '@material-ui/core/CardActions';
 import Avatar from '@material-ui/core/Avatar';
-import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import ShareIcon from '@material-ui/icons/Share';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
+// import axios from 'axios'
+
+// axios.post('url/signin', { id : id, password : password }).then((response)=> {
+// 	// 성공 시
+// }).catch((e) => {
+// 	// 실패 시
+// });
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -19,6 +21,10 @@ const useStyles = makeStyles((theme) => ({
   media: {
     height: 0,
     paddingTop: '56.25%', // 16:9
+  },
+  mediaLeft: {
+    float: 'left',
+    paddingRight: '20px',
   },
   expand: {
     transform: 'rotate(0deg)',
@@ -39,39 +45,30 @@ export default function Home() {
   const classes = useStyles();
 
   return (
-    <Card className={classes.root}>
-      <CardHeader
-        avatar={
-          <Avatar aria-label="recipe">
-            <img src='https://playneko.com/wp-content/uploads/2020/04/cropped-avatarimg_user1.png' className={classes.avatar} />
-          </Avatar>
-        }
-        action={
-          <IconButton aria-label="settings">
-            <MoreVertIcon />
-          </IconButton>
-        }
-        title="라즈베리파이에서 Nyan Cat 테마 설치후 사용하기"
-        subheader="September 14, 2016"
-      />
-      <CardMedia
-        className={classes.media}
-        image="https://playneko.com/wp-content/uploads/2020/09/89e1b67580dc297198e1c8aa76d49d21.png"
-        title="Paella dish"
-      />
-      <CardContent>
-        <Typography variant="body2" color="textSecondary" component="p">
-            이번에 소개할 내용은 라즈베리파이에서 Nyan Cat 테마 설치후 사용하기 입니다.
-        </Typography>
-      </CardContent>
-      <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
-        </IconButton>
-        <IconButton aria-label="share">
-          <ShareIcon />
-        </IconButton>
-      </CardActions>
-    </Card>
+    <>
+        <div className={classes.mediaLeft}>
+            <Card className={classes.root}>
+            <CardHeader
+                avatar={
+                <Avatar aria-label="recipe">
+                    <img src='https://playneko.com/wp-content/uploads/2020/04/cropped-avatarimg_user1.png' className={classes.avatar} />
+                </Avatar>
+                }
+                title="라즈베리파이에서 Nyan Cat 테마 설치후 사용하기"
+                subheader="September 14, 2016"
+            />
+            <CardMedia
+                className={classes.media}
+                image="https://playneko.com/wp-content/uploads/2020/09/89e1b67580dc297198e1c8aa76d49d21.png"
+                title="Paella dish"
+            />
+            <CardContent>
+                <Typography variant="body2" color="textSecondary" component="p">
+                    이번에 소개할 내용은 라즈베리파이에서 Nyan Cat 테마 설치후 사용하기 입니다.
+                </Typography>
+            </CardContent>
+            </Card>
+        </div>
+    </>
   );
 }

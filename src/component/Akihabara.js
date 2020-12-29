@@ -1,9 +1,9 @@
 import React from 'react';
 
-export default function RasberryPi() {
+export default function Akihabara() {
     return (
         <>
-        Rasberry Pi
+        아키바 정보
         </>
     );
 }
