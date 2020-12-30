@@ -1,5 +1,6 @@
-import React, {useState} from 'react';
+import React from 'react';
 import clsx from 'clsx';
+// import { isMobile } from 'react-device-detect';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -39,6 +40,9 @@ const useStyles = makeStyles((theme) => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
+  },
+  appBarFlex: {
+    display: 'flex',
   },
   appBarShift: {
     width: `calc(100% - ${drawerWidth}px)`,
