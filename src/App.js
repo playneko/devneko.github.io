@@ -2,19 +2,22 @@ import React from 'react';
 import clsx from 'clsx';
 // import { isMobile } from 'react-device-detect';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { makeStyles, useTheme, createMuiTheme } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
 import Drawer from '@material-ui/core/Drawer';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import MenuIcon from '@material-ui/icons/Menu';
+import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
+import CssBaseline from '@material-ui/core/CssBaseline';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 
 // 컴포넌트
+// 타이틀
+import Title from "./component/Title";
 // 네비게이션
 import Navibar from "./component/Navibar";
 // 각 페이지
@@ -29,8 +32,13 @@ import Akihabara from "./component/Akihabara";
 import MicroBit from "./component/MicroBit";
 import ChatBot from "./component/ChatBot";
 import Detail from "./component/Detail";
-
+// footer
+import Footer from "./component/Footer";
+// CSS
 import './styles/App.css';
+
+// 타이틀 세팅
+const useTitle = Title();
 
 const drawerWidth = 240;
 
@@ -84,21 +92,40 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const colorTheme = createMuiTheme({
+  palette: {
+    primary: {
+      main: '#424242',
+    },
+    secondary: {
+      main: '#4e342e',
+    },
+  },
+});
+
 function App() {
+  // 타이틀 변경
+  useTitle("Playneko - 아키하바라와 개발정보를 공유하는 블로그 입니다.");
+
+  // 스타일 정보
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+  const [myTheme, setMyTheme] = React.useState(colorTheme);
 
+  // 네비게이션 열기
   const handleDrawerOpen = () => {
     setOpen(true);
   };
 
+  // 네비게이션 닫기
   const handleDrawerClose = () => {
     setOpen(false);
   };
 
   return (
     <Router>
+      <ThemeProvider theme={myTheme}>
       <div className={classes.root}>
         <CssBaseline />
         <AppBar
@@ -163,6 +190,8 @@ function App() {
           </Typography>
         </main>
       </div>
+      <Footer />
+      </ThemeProvider>
     </Router>
   );
 }

@@ -7,7 +7,15 @@ import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
+
+// 컴포넌트
+// 타이틀
+import Title from "../component/Title";
+// 모델
 import HomeModel from "../model/HomeModel";
+
+// 타이틀 세팅
+const useTitle = Title();
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -38,12 +46,16 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Home() {
+  // 타이틀 변경
+  useTitle("Playneko - 아키하바라와 개발정보를 공유하는 블로그 입니다.");
+
+  // 스타일 정보
   const classes = useStyles();
   // 메인 리스트 취득
   const listData = HomeModel();
 
   return (
-    <>
+    <div className="homeStyle-content">
     {
       listData.map(list => (
         <div className={classes.mediaLeft}>
@@ -51,7 +63,7 @@ export default function Home() {
           <CardHeader
               avatar={
                 <Avatar aria-label="recipe">
-                    <img src='https://playneko.com/wp-content/uploads/2020/04/cropped-avatarimg_user1.png' className={classes.avatar} />
+                    <img alt="Avatar" src='https://playneko.com/wp-content/uploads/2020/04/cropped-avatarimg_user1.png' className={classes.avatar} />
                 </Avatar>
               }
               title={list.board_title}
@@ -73,6 +85,6 @@ export default function Home() {
         </div>
       ))
     }
-    </>
+    </div>
   );
 }
