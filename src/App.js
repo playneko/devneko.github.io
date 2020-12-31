@@ -28,6 +28,9 @@ import JavaScript from "./component/JavaScript";
 import Akihabara from "./component/Akihabara";
 import MicroBit from "./component/MicroBit";
 import ChatBot from "./component/ChatBot";
+import Detail from "./component/Detail";
+
+import './styles/App.css';
 
 const drawerWidth = 240;
 
@@ -79,13 +82,6 @@ const useStyles = makeStyles((theme) => ({
     }),
     marginLeft: -drawerWidth,
   },
-  // contentShift: {
-  //   transition: theme.transitions.create('margin', {
-  //     easing: theme.transitions.easing.easeOut,
-  //     duration: theme.transitions.duration.enteringScreen,
-  //   }),
-  //   marginLeft: 0,
-  // },
 }));
 
 function App() {
@@ -152,7 +148,7 @@ function App() {
           <div className={classes.drawerHeader} />
           <Typography paragraph>
               <Switch>
-                <Route exact path="/" component={Home}></Route>
+                <Route exact path="/" component={Home} />
                 <Route path="/rasberry-pi" component={RasberryPi} />
                 <Route path="/python" component={Python} />
                 <Route path="/php" component={Php} />
@@ -162,6 +158,7 @@ function App() {
                 <Route path="/akihabara" component={Akihabara} />
                 <Route path="/micro-bit" component={MicroBit} />
                 <Route path="/chat-bot" component={ChatBot} />
+                <Route path="/detail/:id" component={Detail} />
               </Switch>
           </Typography>
         </main>

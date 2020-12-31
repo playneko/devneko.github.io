@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import Avatar from '@material-ui/core/Avatar';
@@ -6,7 +7,7 @@ import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
-import Homes from "./json/Homes";
+import HomeModel from "../model/HomeModel";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -39,8 +40,7 @@ const useStyles = makeStyles((theme) => ({
 export default function Home() {
   const classes = useStyles();
   // 메인 리스트 취득
-  const listData = Homes();
-  console.log(listData);
+  const listData = HomeModel();
 
   return (
     <>
@@ -54,17 +54,19 @@ export default function Home() {
                     <img src='https://playneko.com/wp-content/uploads/2020/04/cropped-avatarimg_user1.png' className={classes.avatar} />
                 </Avatar>
               }
-              title={list.subject}
-              subheader="September 14, 2016"
+              title={list.board_title}
+              subheader={list.board_date}
           />
-          <CardMedia
-              className={classes.media}
-              image={list.thumbnail}
-              title="Paella dish"
-          />
+          <NavLink to={"/detail/" + list.no}>
+              <CardMedia
+                  className={classes.media}
+                  image={list.board_thumnail}
+                  title={list.board_title}
+              />
+          </NavLink>
           <CardContent>
               <Typography variant="body2" color="textSecondary" component="p">
-                  이번에 소개할 내용은 라즈베리파이에서 Nyan Cat 테마 설치후 사용하기 입니다.
+                {list.board_comment}
               </Typography>
           </CardContent>
           </Card>
