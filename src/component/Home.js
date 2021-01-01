@@ -45,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Home() {
+const Home = () => {
   // 타이틀 변경
   useTitle("Playneko - 아키하바라와 개발정보를 공유하는 블로그 입니다.");
 
@@ -57,13 +57,17 @@ export default function Home() {
   return (
     <div className="homeStyle-content">
     {
-      listData.map(list => (
+      listData.list.map(list => (
         <div className={classes.mediaLeft}>
           <Card className={classes.root}>
           <CardHeader
               avatar={
                 <Avatar aria-label="recipe">
-                    <img alt="Avatar" src='https://playneko.com/wp-content/uploads/2020/04/cropped-avatarimg_user1.png' className={classes.avatar} />
+                  <img
+                    alt="Avatar"
+                    src='https://playneko.com/wp-content/uploads/2020/04/cropped-avatarimg_user1.png'
+                    className={classes.avatar}
+                  />
                 </Avatar>
               }
               title={list.board_title}
@@ -71,9 +75,9 @@ export default function Home() {
           />
           <NavLink to={"/detail/" + list.no}>
               <CardMedia
-                  className={classes.media}
-                  image={list.board_thumnail}
-                  title={list.board_title}
+                className={classes.media}
+                image={list.board_thumnail}
+                title={list.board_title}
               />
           </NavLink>
           <CardContent>
@@ -87,4 +91,6 @@ export default function Home() {
     }
     </div>
   );
-}
+};
+
+export default Home;
