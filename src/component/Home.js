@@ -4,15 +4,15 @@ import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import Avatar from '@material-ui/core/Avatar';
 import CardHeader from '@material-ui/core/CardHeader';
-import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
+import CardMedia from '@material-ui/core/CardMedia';
 
 // 컴포넌트
 // 타이틀
 import Title from "../component/Title";
 // 모델
-import HomeModel from "../model/HomeModel";
+import MainListModel from "../model/MainListModel";
 
 // 타이틀 세팅
 const useTitle = Title();
@@ -52,7 +52,7 @@ export default function Home() {
   // 스타일 정보
   const classes = useStyles();
   // 메인 리스트 취득
-  const listData = HomeModel();
+  const listData = MainListModel();
 
   return (
     <div className="homeStyle-content">

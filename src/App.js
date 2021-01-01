@@ -20,6 +20,8 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import Title from "./component/Title";
 // 네비게이션
 import Navibar from "./component/Navibar";
+// 스크롤탑 
+import ScrollToTop from './component/ScrollToTop';
 // 각 페이지
 import Home from "./component/Home";
 import RasberryPi from "./component/RasberryPi";
@@ -174,7 +176,8 @@ function App() {
         >
           <div className={classes.drawerHeader} />
           <Typography paragraph>
-              <Switch>
+            <Switch>
+              <ScrollToTop>
                 <Route exact path="/" component={Home} />
                 <Route path="/rasberry-pi" component={RasberryPi} />
                 <Route path="/python" component={Python} />
@@ -186,7 +189,8 @@ function App() {
                 <Route path="/micro-bit" component={MicroBit} />
                 <Route path="/chat-bot" component={ChatBot} />
                 <Route path="/detail/:id" component={Detail} />
-              </Switch>
+              </ScrollToTop>
+            </Switch>
           </Typography>
         </main>
       </div>
