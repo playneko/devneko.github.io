@@ -8,7 +8,7 @@ export default function DetailModel(id) {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('https://cocoa.akibatv.net/?/api/blog_playneko_detail?id=' + id);
+                const response = await axios.get('https://cocoa.akibatv.net/?/api/blog/playneko/detail?id=' + id);
                 setJsonData(response.data.detail);
             } catch(e) {
                 console.log(e);

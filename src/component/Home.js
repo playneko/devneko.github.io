@@ -7,6 +7,7 @@ import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import CardMedia from '@material-ui/core/CardMedia';
+import Pagination from '@material-ui/lab/Pagination';
 
 // 컴포넌트
 // 타이틀
@@ -20,6 +21,9 @@ const useTitle = Title();
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 345,
+    '& > *': {
+      marginTop: theme.spacing(2),
+    },
   },
   media: {
     height: 0,
@@ -55,41 +59,46 @@ const Home = () => {
   const listData = MainListModel();
 
   return (
-    <div className="homeStyle-content">
-    {
-      listData.list.map(list => (
-        <div className={classes.mediaLeft}>
-          <Card className={classes.root}>
-          <CardHeader
-              avatar={
-                <Avatar aria-label="recipe">
-                  <img
-                    alt="Avatar"
-                    src='https://playneko.com/wp-content/uploads/2020/04/cropped-avatarimg_user1.png'
-                    className={classes.avatar}
-                  />
-                </Avatar>
-              }
-              title={list.board_title}
-              subheader={list.board_date}
-          />
-          <NavLink to={"/detail/" + list.no}>
-              <CardMedia
-                className={classes.media}
-                image={list.board_thumnail}
+    <>
+      <div className="mainStyle-content">
+      {
+        listData.list.map(list => (
+          <div className={classes.mediaLeft}>
+            <Card className={classes.root}>
+            <CardHeader
+                avatar={
+                  <Avatar aria-label="recipe">
+                    <img
+                      alt="Avatar"
+                      src='https://playneko.com/wp-content/uploads/2020/04/cropped-avatarimg_user1.png'
+                      className={classes.avatar}
+                    />
+                  </Avatar>
+                }
                 title={list.board_title}
-              />
-          </NavLink>
-          <CardContent>
-              <Typography variant="body2" color="textSecondary" component="p">
-                {list.board_comment}
-              </Typography>
-          </CardContent>
-          </Card>
-        </div>
-      ))
-    }
-    </div>
+                subheader={list.board_date}
+            />
+            <NavLink to={"/detail/" + list.no}>
+                <CardMedia
+                  className={classes.media}
+                  image={list.board_thumnail}
+                  title={list.board_title}
+                />
+            </NavLink>
+            <CardContent>
+                <Typography variant="body2" color="textSecondary" component="p">
+                  {list.board_comment}
+                </Typography>
+            </CardContent>
+            </Card>
+          </div>
+        ))
+      }
+      </div>
+      <div className={classes.root + " mainStyle-pagination"}>
+        <Pagination count={listData.paging.total} shape="rounded" />
+      </div>
+    </>
   );
 };
 

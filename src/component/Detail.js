@@ -61,7 +61,7 @@ const parseHtml = htmlParser({
   }]
 });
 
-export default function Detail(props) {
+const Detail = (props) => {
   // 상세 내용 취득
   const getDetailData = DetailModel(props.match.params.id);
   const detailData = getDetailData[0];
@@ -114,3 +114,5 @@ export default function Detail(props) {
       </div>
   );
 }
+
+export default Detail;

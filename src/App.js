@@ -125,13 +125,6 @@ function App() {
     setOpen(false);
   };
 
-  // ref callback
-  // inputRef = {};
-  const setInputRef = element => {
-    console.log(element);
-    // this.inputRef[element.name] = element;
-  };
-
   return (
     <Router>
       <ThemeProvider theme={myTheme}>
@@ -185,7 +178,7 @@ function App() {
           <Typography paragraph>
             <Switch>
               <ScrollToTop>
-                <Route exact path="/" component={Home} ref={setInputRef} />
+                <Route exact path="/" component={Home} />
                 <Route path="/rasberry-pi" component={RasberryPi} />
                 <Route path="/python" component={Python} />
                 <Route path="/php" component={Php} />
