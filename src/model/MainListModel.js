@@ -1,16 +1,16 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios'
 
-var globalData = null;
-var globalPage = 0;
-let limitPageNum = 2;
-
 export default function MainListModel() {
     // 추가 데이터를 로드하는지 아닌지를 담기위한 state
     const [fetching, setFetching] = useState(false);
     // 리스트 데이터 저장
-    const [jsonData, jsonDataSet] = useState([]);
+    const [jsonData, setJsonData] = useState([]);
 
+    var globalData = null;
+    var globalPage = 0;
+    let limitPageNum = 2;
+    
     // 메인 리스트 취득
     const mainFetchData = async () => {
         try {
@@ -20,7 +20,7 @@ export default function MainListModel() {
             if (response.data != null) {
                 globalData = response.data.list;
                 globalPage = globalData.length;
-                jsonDataSet(globalData);
+                setJsonData(globalData);
             }
         } catch(e) {
             console.log(e);
@@ -41,7 +41,7 @@ export default function MainListModel() {
                 const mergedData = globalData.concat(...fetchedData);
                 globalData = mergedData;
                 globalPage = globalData.length;
-                jsonDataSet(globalData);
+                setJsonData(globalData);
             }
         } catch(e) {
             console.log(e);
