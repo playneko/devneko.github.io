@@ -2,10 +2,12 @@ import React from 'react';
 import gfm from 'remark-gfm';
 import Chip from '@material-ui/core/Chip';
 import Avatar from '@material-ui/core/Avatar';
+import Breadcrumbs from '@material-ui/core/Breadcrumbs';
+import { emphasize, withStyles } from '@material-ui/core/styles';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { okaidia } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import ReactMarkdown from 'react-markdown';
 import htmlParser from 'react-markdown/plugins/html-parser';
-import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter';
-import {okaidia} from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 // 컴포넌트
 // 타이틀
@@ -15,6 +17,45 @@ import DetailModel from "../model/DetailModel";
 
 // 타이틀 세팅
 const useTitle = Title();
+
+const StyledBreadcrumb = withStyles((theme) => ({
+  root: {
+    backgroundColor: theme.palette.grey[100],
+    height: theme.spacing(3),
+    color: theme.palette.grey[800],
+    fontWeight: theme.typography.fontWeightRegular,
+    '&:hover, &:focus': {
+      backgroundColor: theme.palette.grey[300],
+    },
+    '&:active': {
+      boxShadow: theme.shadows[1],
+      backgroundColor: emphasize(theme.palette.grey[300], 0.12),
+    },
+  },
+}))(Chip);
+
+const Categorys = (props) => {
+  return (
+    props.map(item => (
+      <Chip
+        size="small"
+        color="primary"
+        avatar={<Avatar>C</Avatar>}
+        label={item ? item : "카테고리 없음"}
+      />
+    ))
+  );
+}
+
+const Tags = (props) => {
+  return (
+    props.map(item => (
+      <Breadcrumbs aria-label="breadcrumb">
+        <StyledBreadcrumb component="a" label={"#" + item} />
+      </Breadcrumbs>
+    ))
+  );
+}
 
 function InlineCodeBlock(props) {
   return (
@@ -68,8 +109,8 @@ const Detail = (props) => {
   var boardTitle = "Playneko - 아키하바라와 개발정보를 공유하는 블로그 입니다.";
   var boardArticle = "";
   var boardDate = "";
-  var boardCat = "";
-  var boardTag = "";
+  var boardCat = [];
+  var boardTag = [];
 
   const renderers = {
       tableCell: TableCellBlock,
@@ -81,7 +122,6 @@ const Detail = (props) => {
   }
 
   if (detailData) {
-    console.log(detailData);
       boardTitle = detailData.board_title;
       boardArticle = detailData.board_article;
       boardDate = detailData.board_date;
@@ -96,12 +136,7 @@ const Detail = (props) => {
       <div className="detailStyle-content">
         <div className="detailArticleTtitle">{boardTitle}</div>
         <div>
-          <Chip
-            size="small"
-            color="primary"
-            avatar={<Avatar>C</Avatar>}
-            label={boardCat ? boardCat : "카테고리 없음"}
-          /> <Chip 
+          {Categorys(boardCat)} <Chip 
             size="small"
             color="secondary"
             variant="outlined"
@@ -110,7 +145,7 @@ const Detail = (props) => {
           />
         </div>
         <ReactMarkdown plugins={[gfm]} skipHtml={false} escapeHtml={false} astPlugins={[parseHtml]} renderers={renderers} children={boardArticle} />
-        <div className="detailArticleTag">{boardTag ? boardTag : "태그없음"}</div>
+        <div className="detailArticleTag">{Tags(boardTag)}</div>
       </div>
   );
 }

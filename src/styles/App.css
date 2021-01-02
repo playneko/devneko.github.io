@@ -15,8 +15,13 @@
 }
 
 .detailArticleTag {
-    color: #737373;
-    font-size: 0.8rem;
+    display: table;
+}
+
+.detailArticleTag > nav {
+    float: left;
+    padding-left: 5px;
+    padding-bottom: 5px;
 }
 
 .mainStyle-pagination {
@@ -26,11 +31,11 @@
 
 /*
 ##Device = Desktops
-##Screen = 1281px to higher resolution desktops
+##Screen = 1721px to higher resolution desktops
 ##Device = 데스크탑
-##Screen = 1281px 이상 해상도 데스크탑
+##Screen = 1721px 이상 해상도 데스크탑
 */
-@media (min-width: 1281px) {
+@media (min-width: 1721px) {
     main {
         width: 100%
     }
@@ -43,12 +48,50 @@
         padding: 15px;
         background: #fff;
         margin: 0 auto !important;
+        width: calc(1160px);
+        max-width: calc(100% - 500px);
+        box-shadow: 5px 5px 5px #bdbdbd;
+    }
+    .makeStyles-content-9 > p > .mainStyle-content {
+        margin: 0 auto;
+        max-width: calc(100% - 350px);
+    }
+    .makeStyles-content-9 > p > .mainStyle-content > .makeStyles-mediaLeft-12 {
+        height: 460px;
+        max-height: 460px;
+    }
+}
+
+/*
+##Device = Laptops, Desktops
+##Screen = B/w 1025px to 1720px
+##Device = 데스크탑
+##Screen = 1025px 이상 해상도 데스크탑
+*/
+@media (min-width: 1025px) and (max-width: 1720px) {
+    main {
+        width: 100%
+    }
+    img {
+        max-width: calc(100% - 10px);
+    }
+    .detailStyle-content {
+        border: 3px solid #fff;
+        border-radius: 10px;
+        padding: 15px;
+        background: #fff;
+        margin: 0 auto !important;
+        width: calc(1160px);
         max-width: calc(100% - 300px);
         box-shadow: 5px 5px 5px #bdbdbd;
     }
     .makeStyles-content-9 > p > .mainStyle-content {
         margin: 0 auto;
-        max-width: calc(100% - 50px);
+        max-width: calc(100% - 200px);
+    }
+    .makeStyles-content-9 > p > .mainStyle-content > .makeStyles-mediaLeft-12 {
+        height: 460px;
+        max-height: 460px;
     }
 }
 
@@ -71,12 +114,16 @@
         padding: 15px;
         background: #fff;
         margin: 0 auto !important;
-        max-width: calc(100% - 150px);
+        max-width: calc(100% - 250px);
         box-shadow: 5px 5px 5px #bdbdbd;
     }
     .makeStyles-content-9 > p > .mainStyle-content {
         margin: 0 auto;
-        max-width: calc(100% - 50px);
+        max-width: calc(100% - 100px);
+    }
+    .makeStyles-content-9 > p > .mainStyle-content > .makeStyles-mediaLeft-12 {
+        height: 460px;
+        max-height: 460px;
     }
 }
 
@@ -106,6 +153,10 @@
         margin: 0 auto;
         max-width: calc(100%);
     }
+    .makeStyles-content-9 > p > .mainStyle-content > .makeStyles-mediaLeft-12 {
+        height: 460px;
+        max-height: 460px;
+    }
 }
 
 /*
@@ -133,6 +184,10 @@
     .makeStyles-content-9 > p > .mainStyle-content {
         margin: 0 auto;
         max-width: calc(100%);
+    }
+    .makeStyles-content-9 > p > .mainStyle-content > .makeStyles-mediaLeft-12 {
+        height: 460px;
+        max-height: 460px;
     }
 }
 

@@ -1,32 +1,34 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import axios from 'axios'
 
-export default function MainListModel() {
+const MainListModel = ({page, jsonData, pagingData, setJsonData, setPagingData}) => {
     // 추가 데이터를 로드하는지 아닌지를 담기위한 state
     // const [fetching, setFetching] = useState(false);
     // 리스트 데이터 저장
-    const [jsonData, setJsonData] = useState([]);
+    // var jsonData = [];
+    // const [jsonData, setJsonData] = useState([]);
     // 페이지 데이터 저장
-    const [pagingData, setPagingData] = useState([]);
+    // var pagingData = [];
+    // const [pagingData, setPagingData] = useState([]);
 
     // var globalData = null;
-    var globalPage = 0;
-    let limitPageNum = 10;
+    var globalPage = page;
+    let limitPageNum = 8;
 
     // 메인 리스트 취득
     const mainFetchData = async () => {
         try {
             const response = await axios.get('https://cocoa.akibatv.net/?/api/blog/playneko/main?page=' + globalPage + '&limitpage=' + limitPageNum);
             if (response.data != null) {
-                const fetchedData = response.data.list;
-                const pagingData = response.data.paging;
-                // console.log(fetchedData);
+                const fetchedJsonData = response.data.list;
+                const fetchedPagingData = response.data.paging;
                 // console.log(pagingData);
                 // console.log(mergedData);
                 // globalData = response.data.list;
                 // globalPage = globalData.length;
-                setJsonData(fetchedData);
-                setPagingData(pagingData);
+                // console.log(fetchedJsonData);
+                setJsonData(fetchedJsonData);
+                setPagingData(fetchedPagingData);
             }
         } catch(e) {
             console.log(e);
@@ -68,16 +70,22 @@ export default function MainListModel() {
     //     }
     // };
 
+    // const onFetchDataHandle = () => {
+    //     mainFetchData();
+    // };
+
     useEffect(() => {
         // 메인 리스트 가져오기
-        mainFetchData();
-        // scroll event listener 등록
-        // window.addEventListener("scroll", handleScroll);
+        // load event listener 등록
+        // window.addEventListener("load", onFetchDataHandle);
         // return () => {
-        //     // scroll event listener 해제
-        //     window.removeEventListener("scroll", handleScroll);
+        //     // load event listener 해제
+        //     window.removeEventListener("load", onFetchDataHandle);
         // };
+        mainFetchData();
     }, []);
 
     return {list: jsonData, paging: pagingData};
 }
+
+export default MainListModel;

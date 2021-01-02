@@ -1,5 +1,5 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useState } from 'react';
+import { NavLink, Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import Avatar from '@material-ui/core/Avatar';
@@ -14,6 +14,7 @@ import Pagination from '@material-ui/lab/Pagination';
 import Title from "../component/Title";
 // 모델
 import MainListModel from "../model/MainListModel";
+import PagingListModel from "../model/PagingListModel";
 
 // 타이틀 세팅
 const useTitle = Title();
@@ -46,8 +47,16 @@ const useStyles = makeStyles((theme) => ({
   },
   avatar: {
     width: '55px',
+    backgroundSize: 'cover',
   },
 }));
+
+var listData = [];
+const onPageChange = ({page, jsonData, pagingData, setJsonData, setPagingData}) => {
+  // console.log(page);
+  // 페이지별 리스트 취득
+  PagingListModel({page, jsonData, pagingData, setJsonData, setPagingData});
+}
 
 const Home = () => {
   // 타이틀 변경
@@ -55,51 +64,65 @@ const Home = () => {
 
   // 스타일 정보
   const classes = useStyles();
-  // 메인 리스트 취득
-  const listData = MainListModel();
+  // 리스트 데이터 저장
+  const [jsonData, setJsonData] = useState([]);
+  // 페이지 데이터 저장
+  const [pagingData, setPagingData] = useState([]);
 
-  return (
-    <>
-      <div className="mainStyle-content">
-      {
-        listData.list.map(list => (
-          <div className={classes.mediaLeft}>
-            <Card className={classes.root}>
-            <CardHeader
-                avatar={
-                  <Avatar aria-label="recipe">
-                    <img
-                      alt="Avatar"
-                      src='https://playneko.com/wp-content/uploads/2020/04/cropped-avatarimg_user1.png'
-                      className={classes.avatar}
-                    />
-                  </Avatar>
-                }
-                title={list.board_title}
-                subheader={list.board_date}
-            />
-            <NavLink to={"/detail/" + list.no}>
-                <CardMedia
-                  className={classes.media}
-                  image={list.board_thumnail}
+  // 메인 리스트 취득
+  var page = 1;
+  listData = MainListModel({page, jsonData, pagingData, setJsonData, setPagingData});
+
+  if (listData.list.length > 0) {
+    return (
+      <>
+        <div className="mainStyle-content">
+        {
+          listData.list.map(list => (
+            <div className={classes.mediaLeft}>
+              <Card className={classes.root}>
+              <CardHeader
+                  avatar={
+                    <Avatar aria-label="recipe">
+                      <img
+                        alt="Avatar"
+                        src='https://playneko.com/wp-content/uploads/2020/04/cropped-avatarimg_user1.png'
+                        className={classes.avatar}
+                      />
+                    </Avatar>
+                  }
                   title={list.board_title}
-                />
-            </NavLink>
-            <CardContent>
-                <Typography variant="body2" color="textSecondary" component="p">
-                  {list.board_comment}
-                </Typography>
-            </CardContent>
-            </Card>
-          </div>
-        ))
-      }
-      </div>
-      <div className={classes.root + " mainStyle-pagination"}>
-        <Pagination count={listData.paging.total} shape="rounded" />
-      </div>
-    </>
-  );
-};
+                  subheader={list.board_date}
+              />
+              <NavLink to={"/detail/" + list.no}>
+                  <CardMedia
+                    className={classes.media}
+                    image={list.board_thumnail}
+                    title={list.board_title}
+                  />
+              </NavLink>
+              <CardContent>
+                  <Typography variant="body2" color="textSecondary" component="p">
+                    {list.board_comment}
+                  </Typography>
+              </CardContent>
+              </Card>
+            </div>
+          ))
+        }
+        </div>
+        <div className={classes.root + " mainStyle-pagination"}>
+          <Pagination count={listData.paging.total} shape="rounded" onChange={(event, page) => onPageChange({page, jsonData, pagingData, setJsonData, setPagingData})} />
+        </div>
+      </>
+    );
+  } else {
+    return (
+      <>
+        <div></div>
+      </>
+    );
+  };
+}
 
 export default Home;
