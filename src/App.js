@@ -1,6 +1,5 @@
 import React from 'react';
 import clsx from 'clsx';
-// import { isMobile } from 'react-device-detect';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { makeStyles, useTheme, createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
@@ -22,28 +21,23 @@ import Title from "./component/Title";
 import Navibar from "./component/Navibar";
 // 스크롤탑 
 import ScrollToTop from './component/ScrollToTop';
-// 각 페이지
-import Home from "./component/Home";
-import RasberryPi from "./component/RasberryPi";
-import Python from "./component/Python";
-import Php from "./component/Php";
-import Java from "./component/Java";
-import Linux from "./component/Linux";
-import JavaScript from "./component/JavaScript";
-import Akihabara from "./component/Akihabara";
-import MicroBit from "./component/MicroBit";
-import ChatBot from "./component/ChatBot";
+// 카테고리
+import Category from "./component/Category";
+// 상세페이지
 import Detail from "./component/Detail";
-// footer
+// 검색
+import Search from "./component/Search";
+// Footer
 import Footer from "./component/Footer";
+// NotFound
+// import NotFound from "./component/NotFound"
 // CSS
 import './styles/App.css';
 
-// 타이틀 세팅
-const useTitle = Title();
-
 const drawerWidth = 240;
 
+// 타이틀 세팅
+const useTitle = Title();
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
@@ -109,7 +103,7 @@ function App() {
   // 타이틀 변경
   useTitle("Playneko - 아키하바라와 개발정보를 공유하는 블로그 입니다.");
 
-  // 스타일 정보
+  // 스타일/테마 정보
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
@@ -146,9 +140,10 @@ function App() {
             >
               <MenuIcon />
             </IconButton>
-            <Typography variant="h6" noWrap>
+            <Typography className={classes.title + " headerTitle"} variant="h6" noWrap>
               여러가지 개발정보를 공유하는 블로그 입니다.
             </Typography>
+            <Search />
           </Toolbar>
         </AppBar>
         <Drawer
@@ -178,17 +173,19 @@ function App() {
           <Typography paragraph>
             <Switch>
               <ScrollToTop>
-                <Route exact path="/" component={Home} />
-                <Route path="/rasberry-pi" component={RasberryPi} />
-                <Route path="/python" component={Python} />
-                <Route path="/php" component={Php} />
-                <Route path="/java" component={Java} />
-                <Route path="/linux" component={Linux} />
-                <Route path="/java-script" component={JavaScript} />
-                <Route path="/akihabara" component={Akihabara} />
-                <Route path="/micro-bit" component={MicroBit} />
-                <Route path="/chat-bot" component={ChatBot} />
+                <Route exact path="/" render={() => <Category catpage="0" />} />
+                <Route path="/rasberry-pi" render={() => <Category catpage="1" />} />
+                <Route path="/python" render={() => <Category catpage="2" />} />
+                <Route path="/php" render={() => <Category catpage="3" />} />
+                <Route path="/java" render={() => <Category catpage="4" />} />
+                <Route path="/linux" render={() => <Category catpage="5" />} />
+                <Route path="/java-script" render={() => <Category catpage="6" />} />
+                <Route path="/akihabara" render={() => <Category catpage="7" />} />
+                <Route path="/micro-bit" render={() => <Category catpage="8" />} />
+                <Route path="/chat-bot" render={() => <Category catpage="9" />} />
+                <Route path="/search/:keyword" component={Category} />
                 <Route path="/detail/:id" component={Detail} />
+                {/* <Route component={NotFound} /> */}
               </ScrollToTop>
             </Switch>
           </Typography>

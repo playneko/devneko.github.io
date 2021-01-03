@@ -1,13 +1,14 @@
 import React from 'react';
 import gfm from 'remark-gfm';
 import Chip from '@material-ui/core/Chip';
+import ReactMarkdown from 'react-markdown';
 import Avatar from '@material-ui/core/Avatar';
+import { DiscussionEmbed } from 'disqus-react';
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
+import htmlParser from 'react-markdown/plugins/html-parser';
 import { emphasize, withStyles } from '@material-ui/core/styles';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { okaidia } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import ReactMarkdown from 'react-markdown';
-import htmlParser from 'react-markdown/plugins/html-parser';
 
 // 컴포넌트
 // 타이틀
@@ -104,7 +105,8 @@ const parseHtml = htmlParser({
 
 const Detail = (props) => {
   // 상세 내용 취득
-  const getDetailData = DetailModel(props.match.params.id);
+  const detailId = props.match.params.id;
+  const getDetailData = DetailModel(detailId);
   const detailData = getDetailData[0];
   var boardTitle = "Playneko - 아키하바라와 개발정보를 공유하는 블로그 입니다.";
   var boardArticle = "";
@@ -146,6 +148,17 @@ const Detail = (props) => {
         </div>
         <ReactMarkdown plugins={[gfm]} skipHtml={false} escapeHtml={false} astPlugins={[parseHtml]} renderers={renderers} children={boardArticle} />
         <div className="detailArticleTag">{Tags(boardTag)}</div>
+        <DiscussionEmbed
+            shortname='playneko-github-io'
+            config={
+                {
+                    url: '',
+                    identifier: detailId,
+                    title: boardTitle,
+                    language: 'en_EN'
+                }
+            }
+        />
       </div>
   );
 }

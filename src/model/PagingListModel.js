@@ -1,13 +1,13 @@
 import axios from 'axios'
 
-const PagingListModel = ({page, jsonData, pagingData, setJsonData, setPagingData}) => {
+const PagingListModel = ({page, jsonData, pagingData, setJsonData, setPagingData, catpage, keyword}) => {
     var globalPage = page;
     let limitPageNum = 8;
 
     // 메인 리스트 취득
     const pagingFetchData = async () => {
         try {
-            const response = await axios.get('https://cocoa.akibatv.net/?/api/blog/playneko/main?page=' + globalPage + '&limitpage=' + limitPageNum);
+            const response = await axios.get('https://cocoa.akibatv.net/?/api/blog/playneko/category?page=' + globalPage + '&limitpage=' + limitPageNum + '&catpage=' + catpage + '&keyword=' + keyword);
             if (response.data != null) {
                 const fetchedJsonData = response.data.list;
                 const fetchedPagingData = response.data.paging;
