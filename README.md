@@ -1,2 +1,6 @@
-# Playneko-React
-### React 테스트 개발용 블로그 입니다.
+# playneko.github.io
+### React로 개발된 블로그 입니다.
+
+> * v1.0
+>   * React
+>   * material-ui

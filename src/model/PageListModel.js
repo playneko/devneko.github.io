@@ -12,6 +12,7 @@ const PageListModel = ({page, jsonData, pagingData, setJsonData, setPagingData, 
             if (response.data != null) {
                 const fetchedJsonData = response.data.list;
                 const fetchedPagingData = response.data.paging;
+                // console.log(fetchedJsonData);
                 setJsonData(fetchedJsonData);
                 setPagingData(fetchedPagingData);
             }
@@ -22,7 +23,7 @@ const PageListModel = ({page, jsonData, pagingData, setJsonData, setPagingData, 
 
     useEffect(() => {
         pageFetchData();
-    }, []);
+    }, [keyword]);
 
     return {list: jsonData, paging: pagingData};
 }
