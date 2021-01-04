@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/static/css/main.9eceb739.chunk.css",
-    "main.js": "/static/js/main.dfd54e70.chunk.js",
-    "main.js.map": "/static/js/main.dfd54e70.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.ab57a817.js",
-    "runtime-main.js.map": "/static/js/runtime-main.ab57a817.js.map",
-    "static/js/2.cd1314ea.chunk.js": "/static/js/2.cd1314ea.chunk.js",
-    "static/js/2.cd1314ea.chunk.js.map": "/static/js/2.cd1314ea.chunk.js.map",
-    "static/js/3.36fa04cd.chunk.js": "/static/js/3.36fa04cd.chunk.js",
-    "static/js/3.36fa04cd.chunk.js.map": "/static/js/3.36fa04cd.chunk.js.map",
-    "index.html": "/index.html",
-    "static/css/main.9eceb739.chunk.css.map": "/static/css/main.9eceb739.chunk.css.map",
-    "static/js/2.cd1314ea.chunk.js.LICENSE.txt": "/static/js/2.cd1314ea.chunk.js.LICENSE.txt"
+    "main.css": "/playneko-react/static/css/main.9eceb739.chunk.css",
+    "main.js": "/playneko-react/static/js/main.dfd54e70.chunk.js",
+    "main.js.map": "/playneko-react/static/js/main.dfd54e70.chunk.js.map",
+    "runtime-main.js": "/playneko-react/static/js/runtime-main.d442a7e9.js",
+    "runtime-main.js.map": "/playneko-react/static/js/runtime-main.d442a7e9.js.map",
+    "static/js/2.cd1314ea.chunk.js": "/playneko-react/static/js/2.cd1314ea.chunk.js",
+    "static/js/2.cd1314ea.chunk.js.map": "/playneko-react/static/js/2.cd1314ea.chunk.js.map",
+    "static/js/3.36fa04cd.chunk.js": "/playneko-react/static/js/3.36fa04cd.chunk.js",
+    "static/js/3.36fa04cd.chunk.js.map": "/playneko-react/static/js/3.36fa04cd.chunk.js.map",
+    "index.html": "/playneko-react/index.html",
+    "static/css/main.9eceb739.chunk.css.map": "/playneko-react/static/css/main.9eceb739.chunk.css.map",
+    "static/js/2.cd1314ea.chunk.js.LICENSE.txt": "/playneko-react/static/js/2.cd1314ea.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.ab57a817.js",
+    "static/js/runtime-main.d442a7e9.js",
     "static/js/2.cd1314ea.chunk.js",
     "static/css/main.9eceb739.chunk.css",
     "static/js/main.dfd54e70.chunk.js"
