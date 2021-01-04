@@ -8,6 +8,7 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import CardMedia from '@material-ui/core/CardMedia';
 import Pagination from '@material-ui/lab/Pagination';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 // 컴포넌트
 // 타이틀
@@ -123,11 +124,19 @@ const Category = (props) => {
       </>
     );
   } else {
-    return (
-      <>
-        <div className="category-content">리스트 정보가 없습니다.</div>
-      </>
-    );
+    if (listData.list != null && listData.list.length < 1) {
+      return (
+        <>
+          <div className="category-content">리스트 정보가 없습니다.</div>
+        </>
+      );
+    } else {
+      return (
+        <div className="category-content progressbar">
+          <CircularProgress disableShrink />
+        </div>
+      );
+    }
   };
 }
 

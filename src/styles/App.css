@@ -47,6 +47,11 @@
     img {
         max-width: calc(100% + 5px);
     }
+    .progressbar {
+        height: 300px;
+        margin: 0 auto;
+        text-align: center;
+    }
     .category-content {
         height: 300px;
         margin: 0 auto;
@@ -88,6 +93,11 @@
     }
     img {
         max-width: calc(100% + 5px);
+    }
+    .progressbar {
+        height: 300px;
+        margin: 0 auto;
+        text-align: center;
     }
     .category-content {
         height: 300px;
@@ -131,6 +141,11 @@
     img {
         max-width: calc(100% + 5px);
     }
+    .progressbar {
+        height: 300px;
+        margin: 0 auto;
+        text-align: center;
+    }
     .category-content {
         height: 300px;
         margin: 0 auto;
@@ -172,6 +187,11 @@
     img {
         max-width: calc(100% + 5px);
     }
+    .progressbar {
+        height: 300px;
+        margin: 0 auto;
+        text-align: center;
+    }
     .category-content {
         height: 300px;
         margin: 0 auto;
@@ -212,6 +232,11 @@
     }
     img {
         max-width: calc(100% + 5px);
+    }
+    .progressbar {
+        height: 300px;
+        margin: 0 auto;
+        text-align: center;
     }
     .category-content {
         height: 300px;
@@ -256,6 +281,11 @@
     }
     img {
         max-width: calc(100% + 5px);
+    }
+    .progressbar {
+        height: 300px;
+        margin: 0 auto;
+        text-align: center;
     }
     .category-content {
         height: 150px;
@@ -305,6 +335,11 @@
     img {
         max-width: calc(100% + 5px);
     }
+    .progressbar {
+        height: 300px;
+        margin: 0 auto;
+        text-align: center;
+    }
     .category-content {
         height: 150px;
         margin: 0 auto;
@@ -344,6 +379,11 @@
     }
     img {
         max-width: calc(100% + 5px);
+    }
+    .progressbar {
+        height: 300px;
+        margin: 0 auto;
+        text-align: center;
     }
     .category-content {
         height: 150px;

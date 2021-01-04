@@ -6,6 +6,7 @@ import Avatar from '@material-ui/core/Avatar';
 import { DiscussionEmbed } from 'disqus-react';
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import htmlParser from 'react-markdown/plugins/html-parser';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import { emphasize, withStyles } from '@material-ui/core/styles';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { okaidia } from 'react-syntax-highlighter/dist/esm/styles/prism';
@@ -134,33 +135,41 @@ const Detail = (props) => {
   // 타이틀 변경
   useTitle("Playneko - " + boardTitle);
 
-  return (
-      <div className="detailStyle-content">
-        <div className="detailArticleTtitle">{boardTitle}</div>
-        <div>
-          {Categorys(boardCat)} <Chip 
-            size="small"
-            color="secondary"
-            variant="outlined"
-            avatar={<Avatar>T</Avatar>}
-            label={boardDate ? boardDate : "0000/00/00 00:00"}
-          />
-        </div>
-        <ReactMarkdown plugins={[gfm]} skipHtml={false} escapeHtml={false} astPlugins={[parseHtml]} renderers={renderers} children={boardArticle} />
-        <div className="detailArticleTag">{Tags(boardTag)}</div>
-        <DiscussionEmbed
-            shortname='playneko-github-io'
-            config={
-                {
-                    url: '',
-                    identifier: detailId,
-                    title: boardTitle,
-                    language: 'en_EN'
+  if (detailData) {
+      return (
+          <div className="detailStyle-content">
+            <div className="detailArticleTtitle">{boardTitle}</div>
+            <div>
+              {Categorys(boardCat)} <Chip 
+                size="small"
+                color="secondary"
+                variant="outlined"
+                avatar={<Avatar>T</Avatar>}
+                label={boardDate ? boardDate : "0000/00/00 00:00"}
+              />
+            </div>
+            <ReactMarkdown plugins={[gfm]} skipHtml={false} escapeHtml={false} astPlugins={[parseHtml]} renderers={renderers} children={boardArticle} />
+            <div className="detailArticleTag">{Tags(boardTag)}</div>
+            <DiscussionEmbed
+                shortname='playneko-github-io'
+                config={
+                    {
+                        url: '',
+                        identifier: detailId,
+                        title: boardTitle,
+                        language: 'en_EN'
+                    }
                 }
-            }
-        />
-      </div>
-  );
+            />
+          </div>
+      );
+  } else {
+      return (
+          <div className="detailStyle-content progressbar">
+            <CircularProgress disableShrink />
+          </div>
+      );
+  }
 }
 
 export default Detail;
