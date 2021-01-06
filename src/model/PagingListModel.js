@@ -7,7 +7,13 @@ const PagingListModel = ({page, jsonData, pagingData, setJsonData, setPagingData
     // 메인 리스트 취득
     const pagingFetchData = async () => {
         try {
-            const response = await axios.get('https://cocoa.akibatv.net/?/api/blog/playneko/category?page=' + globalPage + '&limitpage=' + limitPageNum + '&catpage=' + catpage + '&keyword=' + keyword);
+            const response = await axios.get(
+                'https://akibatv.playneko.com/?/api/blog/category?page=' + globalPage 
+                + '&limitpage=' + limitPageNum 
+                + '&catpage=' + catpage 
+                + '&keyword=' + keyword
+                + '&projectid=9a27a65f138f8f6f4991323212ebb408'
+            );
             if (response.data != null) {
                 const fetchedJsonData = response.data.list;
                 const fetchedPagingData = response.data.paging;
